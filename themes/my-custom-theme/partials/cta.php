@@ -5,7 +5,7 @@ $args = wp_parse_args($args);
 $cta_graphic_url = !empty($args['graphic']) ? esc_url($args['graphic']) : '';
 $cta_graphic_alt_text = !empty($args['graphic-alt-text']) ? esc_attr($args['graphic-alt-text']) : 'CTA icon';
 $cta_header      = !empty($args['header']) ? esc_html($args['header']) : '';
-$cta_text        = !empty($args['text']) ? esc_html($args['text']) : '';
+$cta_text = !empty($args['text']) ? wp_kses_post($args['text']) : '';
 $span            = !empty($args['span']) ? esc_html($args['span']) : '';
 ?>
 
@@ -47,8 +47,8 @@ $span            = !empty($args['span']) ? esc_html($args['span']) : '';
         <div class="d-flex flex-column">
             <h2 class="fw-semibold cta-header">
                 <?php echo $cta_header; ?>
-            </h2>
-            <p class="text-grey mt-3 cta-paragraph w-75"><?php echo $cta_text; ?></p>
+            </h2> 
+            <p class="text-grey mt-3 cta-paragraph w-75"><?php echo wpautop($cta_text, false); ?></p>
             <?php if ($span): ?>
             <h5 class="mt-2 fw-semibold"><?php echo $span; ?></h5>
             <?php endif; ?>
