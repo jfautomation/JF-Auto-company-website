@@ -1,0 +1,18 @@
+# Ignore all uploads
+uploads/
+
+# Ignore debug/log files
+*.log
+
+# Ignore cache folders
+cache/
+advanced-cache.php
+object-cache.php
+
+# Ignore plugin build assets (like ACF build files)
+plugins/advanced-custom-fields/assets/build/
+plugins/advanced-custom-fields/assets/images/
+
+# Ignore other local or system files
+.DS_Store
+Thumbs.db

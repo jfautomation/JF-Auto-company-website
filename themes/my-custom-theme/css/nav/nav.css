@@ -1,0 +1,119 @@
+.company-logo {
+  width: 175px;
+}
+
+.navbar-brand {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar-toggler {
+  border: none !important;
+  background-color: white;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.top-nav {
+  border-bottom: 1px solid rgba(186, 186, 186, 0.49);
+  height: 2.25rem;
+}
+
+.top-nav.grey-border {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.navbar-brand {
+  margin-top: -8px;
+}
+
+.dropdown-toggle::after {
+  position: relative !important;
+}
+
+.dropdown-item {
+  font-size: 0.95rem !important;
+}
+
+.dropdown-item:hover {
+  background-color: #ebebeb;
+}
+
+/* //// conditionals  */
+
+/* Default transparent navbar */
+.navbar {
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.05s ease-in-out !important;
+}
+
+.navbar a.nav-link,
+.navbar a.nav-link.active {
+  color: white;
+  text-transform: uppercase;
+  width: fit-content;
+  transition: color 0.3s ease;
+  padding: unset !important;
+  padding: unset !important;
+  font-size: 0.96rem;
+  margin-top: 6px;
+}
+
+.navbar a.nav-link:hover,
+.navbar a.nav-link.active:hover {
+  color: rgb(184, 184, 184);
+}
+
+/* White navbar state */
+.navbar.nav-white {
+  background-color: white !important;
+  color: black;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+/* Box shadow only when scrolled */
+.navbar.nav-white.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.nav-white a.nav-link,
+.navbar.nav-white a.nav-link.active {
+  color: black;
+}
+
+/* When menu (drawer) opens — instant change */
+.navbar.menu-open a.nav-link {
+  color: black !important;
+  transition: none !important; /* instant switch, no delay */
+}
+
+.company-logo {
+  height: auto;
+  max-height: 50px; /* adjust as needed */
+}
+
+.logo-dark {
+  display: none; /* hidden by default */
+}
+
+.navbar.nav-white .logo-dark {
+  display: inline-block; /* show dark logo when nav is white */
+}
+
+.navbar.nav-white .logo-light {
+  display: none; /* hide light logo when nav is white */
+}
+
+.navbar.nav-transparent .logo-light {
+  display: inline-block; /* show light logo when transparent */
+}
+
+.navbar.nav-transparent .logo-dark {
+  display: none; /* hide dark logo when transparent */
+}
+
+

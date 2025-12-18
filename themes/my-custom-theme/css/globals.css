@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Michroma&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+
+:root {
+  --color-gradient-light-blue: #3a7bd5;
+  --color-gradient-dark-blue: #003bb3;
+  --color-text-primary: #0044cc;
+  --color-primary: #0d6efd;
+  --color-black: #1e1e1e;
+  --color-bs-dark: #212529;
+  --color-text-dark-lighter: #1c1c1c;
+  --color-grey-text: #5b5a5a;
+  --color-grey-text-on-black: #757575;
+  --color-light-grey-border: #e5e5e5;
+  --color-light-grey-carousel-indicators: #c2c2c2;
+  --color-xtra-light-grey-bg: #edf0f3;
+  --color-light-grey-bg: #eef0f4;
+  --color-red: #ff4a3d;
+  --color-gradient-light-red: #ff4a3d;
+  --color-gradient-dark-red: #b20000;
+  --color-dark-pink: #890c4b;
+  --color-yellow-star: #ffc300;
+  --font-base: "Titillium Web";
+  --blue-gradient-background: linear-gradient(
+    to right,
+    var(--color-gradient-light-blue),
+    var(--color-gradient-dark-blue)
+  );
+  --red-gradient-background: linear-gradient(
+    to right,
+    var(--color-gradient-light-red),
+    var(--color-gradient-dark-red)
+  );
+  --rounded-border: 4.6px;
+  --shadow-light: 0 1px 4px rgba(0, 0, 0, 0.035);
+  --shadow-med: 0 2px 16px 0 #10182824;
+  --border-light: #d7d7d7;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.margin-top-med {
+  margin-top: 3rem;
+}
+
+.btn-no-border {
+  border: none !important;
+}
+
+.white-link {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.small-text {
+  font-size: 0.9rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+  background-color: var(--color-light);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+section {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.white-page-section {
+  margin-top: 8rem;
+}
+
+.h1-main-header {
+  font-size: 1.9rem !important;
+}
+
+.paragraph-container {
+  width: 75%;
+}
+
+.xtra-light-grey-container {
+  background-color: var(--color-xtra-light-grey-bg);
+}
+
+.light-grey-container {
+  background-color: var(--color-light-grey-bg);
+}
+
+.dark-pink-bg {
+  background-color: var(--color-dark-pink);
+}
+
+.dark-grey-container {
+  background-color: var(--color-dark-grey-bg) !important;
+}
+
+.black-bg {
+  background-color: var(--color-black);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, #fafafa, #f0f0f0);
+}
+
+hr {
+  opacity: 0.1 !important;
+}
+
+.custom-rounded {
+  border-radius: var(--rounded-border) !important;
+}
+
+.icon-container {
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid #e3dfdf;
+}
+
+.text-grey {
+  color: var(--color-grey-text) !important;
+}
+
+.text-grey-on-black {
+  color: var(--color-grey-text-on-black);
+}
+
+.text-red {
+  color: var(--color-red) !important;
+}
+
+.bg-red {
+  background-color: var(--color-red) !important;
+}
+
+.bg-light-blue {
+  background-color: var(--color-gradient-light-blue);
+}
+
+.bg-yellow {
+  color: var(--color-yellow-star);
+}
+
+.shadow-light {
+  box-shadow: var(--shadow-light);
+}
+
+.box-shadow {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.custom-badge {
+  font-weight: 500;
+  border: 0.1px solid white;
+  background-color: #ffffff2b;
+}
+
+.indicator-container {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-light);
+}
+
+.bg-light-grey {
+  background-color: var(--color-light-grey-bg);
+}
+
+.bg-dark-grey {
+  background-color: var(--color-dark-grey-bg);
+}
+
+.border-light-grey {
+  border: 1px solid var(--color-light-grey-border);
+}
+
+.btn-base {
+  font-size: 0.9rem;
+  font-family: "Titillium Web";
+  min-width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  padding: 13px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: var(--rounded-border);
+  font-weight: 700;
+}
+
+.btn-sm {
+  padding: 0.4rem 1.5rem;
+  font-size: 0.9rem;
+  min-width: unset !important;
+}
+
+.btn-md {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  min-width: unset !important;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+
+/* ///// btn outline white */
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline-white:hover {
+  background-color: white;
+  color: var(--color-bs-dark);
+}
+
+/* ///// btn outline black */
+.btn-outline-black {
+  background: transparent;
+  border: 2px solid var(--color-bs-dark);
+  color: var(--color-bs-dark);
+}
+
+.btn-outline-black:hover {
+  background: var(--color-bs-dark);
+  color: white;
+}
+
+.btn-outline-primary {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--bs-dark);
+}
+
+.btn-white:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-outline-primary:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.icon-white {
+  color: white !important;
+}
+
+.icon-black {
+  color: black !important;
+}
+
+.scaled-image {
+  transition: transform 0.4s ease;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.scaled-image:hover {
+  transform: translateY(-6px);
+}
+
+.breadcrumb-item.active {
+  font-size: 16px;
+}
+
+@media (max-width: 550px) {
+  section {
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .btn-base {
+    width: 100% !important;
+  }
+}
