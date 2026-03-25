@@ -12,7 +12,7 @@
 
 <div class="landing-page-content">
     <?php get_template_part('partials/landing-page-hero')?>
-    <section>
+    <!-- <section>
         <div class="container">
             <div class="row">
                 <div class="col pb-4">
@@ -27,7 +27,7 @@ echo wpautop($holiday_banner);
             </div>
         </div>
 </div>
-</section>
+</section> -->
 
 <section class="light-grey-container">
 

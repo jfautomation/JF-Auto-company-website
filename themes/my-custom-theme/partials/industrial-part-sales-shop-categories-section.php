@@ -3,7 +3,7 @@
 <?php
 $categories = [];
 
-for ($i = 1; $i <= 7; $i++) {
+for ($i = 1; $i <= 8; $i++) {
     $categories[] = [
         'title' => get_field("category_{$i}_title"),
         'link'  => get_field("category_{$i}_link"),
