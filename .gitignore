@@ -13,6 +13,6 @@ object-cache.php
 plugins/advanced-custom-fields/assets/build/
 plugins/advanced-custom-fields/assets/images/
 
-# Ignore other local or system files
+# Ignore other local/system files
 .DS_Store
 Thumbs.db
