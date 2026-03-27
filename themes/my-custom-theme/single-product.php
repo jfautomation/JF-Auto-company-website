@@ -81,6 +81,19 @@ $GLOBALS['dynamic_product'] = $product;
         </div>
         <div class="col-12 col-lg-6">
             <h2 class="mb-1"><?php echo esc_html($product['name']); ?></h2>
+            <div class="d-flex gap-2 mt-3 single-product-page-btn-container">
+    <?php if (isset($product['price']) && $product['price'] > 0): ?>
+        <div class="product-price fw-semibold fs-5 text-dark">
+            $<?php echo number_format($product['price'], 2); ?>
+        </div>
+    <?php else: ?>
+        <a href="mailto:info@jfautomation.ca" class="btn btn-outline-primary fw-semibold">
+            Request a Quote
+        </a>
+    <?php endif; ?>
+
+    
+</div>
             <div class="w-auto mt-2"><span class="w-auto badge text-success border border-success"><i
                         class="bi bi-box me-2"></i>In stock</span></div>
             <div class="mt-1">
