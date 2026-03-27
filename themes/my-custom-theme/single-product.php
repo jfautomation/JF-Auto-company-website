@@ -87,7 +87,7 @@ $GLOBALS['dynamic_product'] = $product;
             $<?php echo number_format($product['price'], 2); ?>
         </div>
     <?php else: ?>
-        <a href="mailto:info@jfautomation.ca" class="btn btn-outline-primary fw-semibold">
+        <a href="mailto:info@jfautomation.ca" class="fw-semibold">
             Request a Quote
         </a>
     <?php endif; ?>
