@@ -392,7 +392,7 @@ function get_all_products($globals_id = 578) {
       array(
         'name' => get_field('62042rs1_bearing_deep_groove_ball_bearing_name', $globals_id), 
         'id' =>  sanitize_title(get_field('62042rs1_bearing_deep_groove_ball_bearing_id', $globals_id)),
-        'price' => (int) get_field('62042rs1_bearing_deep_groove_ball_bearing_price', $globals_id),
+        // 'price' => (int) get_field('62042rs1_bearing_deep_groove_ball_bearing_price', $globals_id),
         'description' => get_field('62042rs1_bearing_deep_groove_ball_bearing_description', $globals_id),
         'image' => get_field('62042rs1_bearing_deep_groove_ball_bearing_image', $globals_id), 
         'category' => get_field('62042rs1_bearing_deep_groove_ball_bearing_category', $globals_id), 
@@ -403,7 +403,7 @@ function get_all_products($globals_id = 578) {
          array(
         'name' => get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_name', $globals_id), 
         'id' =>  sanitize_title(get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_id', $globals_id)),
-        'price' =>  (int) get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_price', $globals_id)),
+        // 'price' =>  (int) get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_price', $globals_id)),
         'description' => get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_description', $globals_id),
         'image' => get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_image', $globals_id), 
         'category' => get_field('w_6205_2rs1_c3_bearing_25_52_15_mm_stainless_steel_deep_groove_ball_bearing_category', $globals_id), 
