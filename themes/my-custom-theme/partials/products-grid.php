@@ -61,7 +61,8 @@ $globals_id = 578
                 </div>
                 <?php endif; ?>
                 <div class="card-body w-100 d-flex flex-column mt-4 justify-content-between">
-                    <div>
+                    <div class="d-flex flex-column justify-content-between h-100">
+                     <div>
                         <a class="text-dark text-decoration-none product-link"
                             href="<?php echo esc_url('/all-products/?id=' . $product['id']); ?>">
                             <h6 class="card-title fw-semibold">
@@ -70,24 +71,37 @@ $globals_id = 578
                         </a>
 
                     </div>
-
-                    <?php if (!empty($product['price'])): ?>
-    <div class="mt-2">
-        <span class="fw-semibold text-dark">
-            $<?php echo esc_html($product['price']); ?>
+                     <div class=""><div>
+                        
+             <?php if (isset($product['price']) && $product['price'] > 0): ?>
+    <div class="mt-3">
+        <span class="fw-semibold fs-5">
+            $<?php echo number_format($product['price'], 2); ?>
         </span>
     </div>
+<?php else: ?>
+    <div class="mt-2">
+        <a href="mailto:info@jfautomation.ca" class="fw-semibold text-primary text-decoration-none">
+            Request a Quote
+        </a>
+    </div>
 <?php endif; ?>
-
-
-                    <div>
-                        <div class="mt-1">
-                        <a class="small-text category-span text-grey mt-2 text-decoration-none"
+  <div class="">
+                        <a class="small-text category-span text-grey text-decoration-none"
                             href="/<?php echo esc_attr($product['category_url']); ?>">
                             <span class=""> <?php echo esc_html($product['category']); ?></span>
                         </a>
-                </div>
+                </div> 
+                       
+                    </div></div>
+                   
+                   
                     </div>
+                  
+
+
+
+                   
                     <div class="w-auto mt-2"><span class="w-auto badge text-success border border-success"><i class="bi bi-box me-2"></i>In
                             stock</span></div>
 
