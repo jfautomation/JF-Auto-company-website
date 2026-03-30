@@ -444,7 +444,7 @@ function get_all_products($globals_id = 578) {
         'seo_title' => get_field('6208-2rs1c3_bearing_–_40x80x18_mm_deep_groove_ball_bearing_seo_title', $globals_id),
         'meta_description' => get_field('6208-2rs1c3_bearing_–_40x80x18_mm_deep_groove_ball_bearing_meta_description', $globals_id),
         'canonical_url' => get_field('6208-2rs1c3_bearing_–_40x80x18_mm_deep_groove_ball_bearing_canonical_url', $globals_id),),
-          array(
+        //   array(
         // 'name' => get_field('6209-2rs1c3_bearing_–_45x85x19_mm_deep_groove_ball_bearing_name', $globals_id), 
         // 'id' =>  sanitize_title(get_field('6209-2rs1c3_bearing_–_45x85x19_mm_deep_groove_ball_bearing_id', $globals_id)),
         // 'price' => floatval (get_field('6209-2rs1c3_bearing_–_45x85x19_mm_deep_groove_ball_bearing_price', $globals_id)),
