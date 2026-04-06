@@ -22,10 +22,6 @@ get_template_part('partials/services');
 </section>
 <?php get_template_part('partials/online-shop-section')?>
 
-
-
-
-<!-- <?php get_template_part('partials/online-shop-section')?> -->
 <section>
     <?php
 get_template_part('partials/cta', null, [

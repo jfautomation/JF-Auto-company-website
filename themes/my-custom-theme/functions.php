@@ -1,4 +1,6 @@
 <?php
+require_once get_template_directory() . '/includes/helpers.php';
+
 // Theme Setup Function
 function my_custom_theme_setup()
 {

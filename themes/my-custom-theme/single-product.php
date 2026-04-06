@@ -44,7 +44,7 @@ $product_id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : '';
 
 $product = null;
 foreach ($products as $p) {
-    if ($p['id'] === $product_id) {
+    if (($p['id'] ?? '') === $product_id) {
         $product = $p;
         break;
     }
@@ -55,79 +55,97 @@ if (!$product) {
     return;
 }
 
-// Make product available for template
-$GLOBALS['dynamic_product'] = $product;
-
-// Now just output the product page content
+// Safe values
+$product_name = $product['name'] ?? 'Product';
+$product_image = safe_product_image($product['image'] ?? null);
+$product_price = $product['price'] ?? null;
+$product_category = $product['category'] ?? '';
+$product_category_url = $product['category_url'] ?? '';
+$product_description = $product['description'] ?? '';
 ?>
-
 
 <div class="container pb-5">
+
+    <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/all-products">All products</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><?php echo esc_html($product['name']); ?></li>
+            <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo esc_url('/all-products'); ?>">All products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <?php echo esc_html($product_name); ?>
+            </li>
         </ol>
     </nav>
+
     <div class="row mt-md-5 pt-md-3 align-items-start">
+
+        <!-- IMAGE -->
         <div class="col-12 col-lg-6 product-image-col">
-            <?php if (!empty($product['image'])): ?>
             <div class="product-image-wrapper">
-                <img src="<?php echo esc_url($product['image']); ?>" alt="<?php echo esc_attr($product['name']); ?>"
-                    class="product-page-product-image">
+                <img 
+                    src="<?php echo esc_url($product_image); ?>" 
+                    alt="<?php echo esc_attr($product_name); ?>"
+                    class="product-page-product-image"
+                />
             </div>
-            <?php endif; ?>
         </div>
+
+        <!-- DETAILS -->
         <div class="col-12 col-lg-6">
-            <h2 class="mb-1"><?php echo esc_html($product['name']); ?></h2>
-            <div class="d-flex gap-2 mt-3 single-product-page-btn-container">
-    <?php if (isset($product['price']) && $product['price'] > 0): ?>
-        <div class="product-price fw-semibold fs-5 text-dark">
-            $<?php echo number_format($product['price'], 2); ?>
-        </div>
-    <?php else: ?>
-        <a href="mailto:info@jfautomation.ca" class="fw-semibold">
-            Request a Quote
-        </a>
-    <?php endif; ?>
 
-    
-</div>
-            <div class="w-auto mt-2"><span class="w-auto badge text-success border border-success"><i
-                        class="bi bi-box me-2"></i>In stock</span></div>
-            <div class="mt-1">
-                <a class="product-page-category-link" href="/<?php echo esc_html($product['category_url']); ?>">
-                    <span class=""><?php echo esc_html($product['category']); ?></span>
-                </a>
+            <h2 class="mb-1"><?php echo esc_html($product_name); ?></h2>
+
+            <!-- Price / CTA -->
+            <div class="d-flex gap-2 mt-3 single-product-page-btn-container">
+                <?php if (!empty($product_price) && $product_price > 0): ?>
+                    <div class="product-price fw-semibold fs-5 text-dark">
+                        $<?php echo number_format((float)$product_price, 2); ?>
+                    </div>
+                <?php else: ?>
+                    <a href="mailto:info@jfautomation.ca" class="fw-semibold">
+                        Request a Quote
+                    </a>
+                <?php endif; ?>
             </div>
 
-
-            <div class="d-flex gap-2 mt-3 single-product-page-btn-container">
-                <?php echo do_shortcode(
-    '[button variant="primary" link="tel:9052680778"]Call to Purchase[/button]'
-); ?>
-                <?php echo do_shortcode(
-    '[button variant="outline-primary" link="mailto:info@jfautomation.ca"]Email to Purchase[/button]'
-); ?>
+            <!-- Stock -->
+            <div class="w-auto mt-2">
+                <span class="badge text-success border border-success">
+                    <i class="bi bi-box me-2"></i>In stock
+                </span>
             </div>
+
+            <!-- Category -->
+            <?php if (!empty($product_category)): ?>
+                <div class="mt-1">
+                    <a class="product-page-category-link"
+                       href="<?php echo esc_url('/' . $product_category_url); ?>">
+                        <?php echo esc_html($product_category); ?>
+                    </a>
+                </div>
+            <?php endif; ?>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-2 mt-3 single-product-page-btn-container">
+                <?php echo do_shortcode('[button variant="primary" link="tel:9052680778"]Call to Purchase[/button]'); ?>
+                <?php echo do_shortcode('[button variant="outline-primary" link="mailto:info@jfautomation.ca"]Email to Purchase[/button]'); ?>
+            </div>
+
         </div>
     </div>
+
+    <!-- DESCRIPTION -->
     <div class="row mt-4">
-
-
         <h4 class="fw-semibold">
             <?php 
-$globals_id = 578;
-echo esc_html( get_field('single_product_page_featured_products_header', $globals_id) ); 
-?>
+            $globals_id = 578;
+            echo esc_html(get_field('single_product_page_featured_products_header', $globals_id)); 
+            ?>
         </h4>
-        <p class="mt-1"><?php echo esc_html($product['description']); ?></p>
 
-
+        <p class="mt-1">
+            <?php echo esc_html($product_description); ?>
+        </p>
     </div>
-
-
-
 
 </div>

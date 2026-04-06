@@ -117,54 +117,71 @@ $products = array_filter($products, function ($product) {
 });
 ?>
 
-<?php foreach ($products as $product): ?>
+<?php foreach ($products as $product): 
+
+    $product_id = $product['id'] ?? '';
+    $product_name = $product['name'] ?? 'Product';
+    $product_image = safe_product_image($product['image'] ?? null);
+    $product_category = $product['category'] ?? '';
+    $product_category_url = $product['category_url'] ?? '#';
+
+?>
 
 <div class="custom-carousel-card custom-rounded d-flex flex-column text-dark text-center">
     <div class="custom-carousel-card-inner-wrapper custom-rounded">
         <div class="row h-100">
             <div class="col-12">
                 <div class="d-flex flex-column h-100 justify-content-between align-items-start">
-                    <?php if ($product['image']): ?>
 
+                    <!-- Image -->
                     <div class="w-100 d-flex justify-content-center img-container p-3 custom-rounded">
-                        <a class="" href="<?php echo esc_url('/all-products/?id=' . $product['id']); ?>">
-                            <img src="<?php echo esc_url($product['image']); ?>"
+                        <a href="<?php echo esc_url('/all-products/?id=' . $product_id); ?>">
+                            <img 
+                                src="<?php echo esc_url($product_image); ?>"
                                 class="card-img-top product-image custom-rounded"
-                                alt="<?php echo esc_attr($product['name']); ?>">
+                                alt="<?php echo esc_attr($product_name); ?>"
+                            />
                         </a>
                     </div>
 
-                    <?php endif; ?>
-                    <div class="card-body d-flex flex-column w-100 d-flex flex-column justify-content-between mt-3">
+                    <!-- Body -->
+                    <div class="card-body d-flex flex-column w-100 justify-content-between mt-3">
+
                         <div>
                             <a class="text-dark text-decoration-none product-link"
-                                href="<?php echo esc_url('/all-products/?id=' . $product['id']); ?>">
+                               href="<?php echo esc_url('/all-products/?id=' . $product_id); ?>">
                                 <h6 class="card-title fw-semibold text-start">
-                                    <?php echo esc_html($product['name']); ?>
+                                    <?php echo esc_html($product_name); ?>
                                 </h6>
                             </a>
                         </div>
-                        <div class="w-100 mt-1 d-flex justify-content-start"><span
-                                class="w-auto badge text-success border border-success"><i class="bi bi-box me-2"></i>In
-                                stock</span></div>
-                        <div>
 
-                            <div class="text-start text-grey small-text"> <a
-                                    class="small-text category-span text-grey text-decoration-none"
-                                    href="/<?php echo esc_html($product['category_url']); ?>">
-                                    <span class=""> <?php echo esc_html($product['category']); ?></span>
-                                </a></div>
+                        <!-- Stock -->
+                        <div class="w-100 mt-1 d-flex justify-content-start">
+                            <span class="badge text-success border border-success">
+                                <i class="bi bi-box me-2"></i>In stock
+                            </span>
                         </div>
 
-
+                        <!-- Category -->
+                        <div class="text-start text-grey small-text">
+                            <a class="category-span text-grey text-decoration-none"
+                               href="<?php echo esc_url('/' . $product_category_url); ?>">
+                                <?php echo esc_html($product_category); ?>
+                            </a>
+                        </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <?php endforeach; ?>
+
+
 
 <?php
 $carousel_content = ob_get_clean();
