@@ -499,6 +499,17 @@ function get_all_products($globals_id = 578) {
         'seo_title' => get_field('6213-2rs1c3_bearing_–_65x120x23_mm_deep_groove_ball_bearing_seo_title', $globals_id),
         'meta_description' => get_field('6213-2rs1c3_bearing_–_65x120x23_mm_deep_groove_ball_bearing_meta_description', $globals_id),
         'canonical_url' => get_field('6213-2rs1c3_bearing_–_65x120x23_mm_deep_groove_ball_bearing_canonical_url', $globals_id),),
+         array(
+        'name' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_name', $globals_id), 
+        'id' =>  sanitize_title(get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_id', $globals_id)),
+        'price' => floatval (get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_price', $globals_id)),
+        'description' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_description', $globals_id),
+        'image' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_image', $globals_id), 
+        'category' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_category', $globals_id), 
+        'category_url' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_category_url', $globals_id),
+        'seo_title' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_seo_title', $globals_id),
+        'meta_description' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_meta_description', $globals_id),
+        'canonical_url' => get_field('6210-2z_bearing_–_50x90x20_mm_shielded_deep_groove_ball_bearing_canonical_url', $globals_id),),
     );
 
     return array_filter($products, fn($p) => !empty($p['name']));
