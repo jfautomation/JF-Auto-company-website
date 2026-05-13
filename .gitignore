@@ -1,18 +1,44 @@
-# Ignore all uploads
+# =========================
+# WordPress uploads
+# =========================
 uploads/
 
-# Ignore debug/log files
-*.log
-
-# Ignore cache folders
+# =========================
+# Caches & runtime files
+# =========================
 cache/
 advanced-cache.php
 object-cache.php
 
-# Ignore plugin build assets (like ACF build files)
+# =========================
+# Logs & debug files
+# =========================
+*.log
+debug.log
+
+# =========================
+# System files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Plugin build / generated assets
+# =========================
 plugins/advanced-custom-fields/assets/build/
 plugins/advanced-custom-fields/assets/images/
 
-# Ignore other local/system files
-.DS_Store
-Thumbs.db
+# =========================
+# Heavy / vendor-managed plugins (IMPORTANT)
+# These should NOT be in Git for this setup
+# =========================
+plugins/google-site-kit/
+plugins/woocommerce/
+plugins/akismet/
+plugins/jetpack/
+
+# =========================
+# Optional: Local environment files
+# =========================
+.env
+*.local

@@ -40,11 +40,17 @@
 
 <?php
 $products = get_all_products();
-$product_id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : '';
+
+$product_slug = get_query_var('product_slug');
 
 $product = null;
+
 foreach ($products as $p) {
-    if (($p['id'] ?? '') === $product_id) {
+
+    if (
+        ($p['id'] ?? '') === $product_slug
+        || ($p['slug'] ?? '') === $product_slug // optional fallback
+    ) {
         $product = $p;
         break;
     }

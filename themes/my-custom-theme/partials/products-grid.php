@@ -44,13 +44,16 @@ $globals_id = 578
 
     // Normalize data safely
     $product_id = $product['id'] ?? '';
+    $product_slug = $product['slug'] ?? $product_id; // fallback safety
+
     $product_name = $product['name'] ?? 'Product';
     $product_image = safe_product_image($product['image'] ?? null);
     $product_price = $product['price'] ?? null;
     $product_category = $product['category'] ?? '';
     $product_category_url = $product['category_url'] ?? '#';
 
-    $product_link = esc_url('/all-products/?id=' . $product_id);
+    // ✅ CLEAN URL (now uses slug)
+    $product_link = esc_url('/all-products/' . $product_slug);
 ?>
 
     <div class="col-12 col-md-6 col-lg-3 mb-5">
