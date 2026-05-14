@@ -105,7 +105,7 @@ $product_description = $product['description'] ?? '';
             <div class="d-flex gap-2 mt-3 single-product-page-btn-container">
                 <?php if (!empty($product_price) && $product_price > 0): ?>
                     <div class="product-price fw-semibold fs-5 text-dark">
-                        $<?php echo number_format((float)$product_price, 2); ?>
+                       <?php echo '$' . number_format((float)$product_price, 2) . ' CAD'; ?>
                     </div>
                 <?php else: ?>
                     <a href="mailto:info@jfautomation.ca" class="fw-semibold">
