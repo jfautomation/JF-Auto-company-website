@@ -84,7 +84,7 @@ $globals_id = 578
                         <?php if (!empty($product_price) && $product_price > 0): ?>
                             <div class="mt-2">
                                 <span class="fw-semibold fs-5">
-                                    $<?php echo number_format((float)$product_price, 2); ?>
+                                    <?php echo '$' . number_format((float)$product_price, 2) . ' CAD'; ?>
                                 </span>
                             </div>
                         <?php else: ?>
