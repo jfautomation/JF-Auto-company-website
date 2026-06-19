@@ -2,7 +2,7 @@
 /**
  * Template Name: Page Wrapper
  */
-?> 
+?>
 
 <?php
 get_template_part('partials/header');
@@ -21,12 +21,12 @@ $is_transparent_page =
 ?>
 
 
-<!-- <?php if ($is_white_page) echo '<section class="white-page-section">'; ?> -->
 
-     <main class="site-main-content">
-        <?php if (!$is_transparent_page) echo '<section class="white-page-section">'; ?>
 
-<?php
+<main class="site-main-content">
+    <?php if (!$is_transparent_page) echo '<section class="white-page-section">'; ?>
+
+    <?php
 if (is_front_page()) {
     get_template_part('page-landing');
 } elseif (is_home()) {
