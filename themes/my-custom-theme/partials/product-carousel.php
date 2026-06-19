@@ -100,6 +100,7 @@
 }
 </style>
 
+
 <?php
 $globals_id = 578;
 ?>
@@ -117,14 +118,14 @@ $products = array_filter($products, function ($product) {
 });
 ?>
 
-<?php foreach ($products as $product): 
+<?php foreach ($products as $product):
 
     $product_id = $product['id'] ?? '';
+    $product_slug = $product['slug'] ?? $product_id;
     $product_name = $product['name'] ?? 'Product';
     $product_image = safe_product_image($product['image'] ?? null);
     $product_category = $product['category'] ?? '';
     $product_category_url = $product['category_url'] ?? '#';
-
 ?>
 
 <div class="custom-carousel-card custom-rounded d-flex flex-column text-dark text-center">
@@ -135,12 +136,10 @@ $products = array_filter($products, function ($product) {
 
                     <!-- Image -->
                     <div class="w-100 d-flex justify-content-center img-container p-3 custom-rounded">
-                        <a href="<?php echo esc_url('/all-products/?id=' . $product_id); ?>">
-                            <img 
-                                src="<?php echo esc_url($product_image); ?>"
+                        <a href="<?php echo esc_url('/all-products/' . ($product['slug'] ?? $product_id)); ?>">
+                            <img src="<?php echo esc_url($product_image); ?>"
                                 class="card-img-top product-image custom-rounded"
-                                alt="<?php echo esc_attr($product_name); ?>"
-                            />
+                                alt="<?php echo esc_attr($product_name); ?>" />
                         </a>
                     </div>
 
@@ -149,7 +148,7 @@ $products = array_filter($products, function ($product) {
 
                         <div>
                             <a class="text-dark text-decoration-none product-link"
-                               href="<?php echo esc_url('/all-products/?id=' . $product_id); ?>">
+                                href="<?php echo esc_url('/all-products/' . ($product['slug'] ?? $product_id)); ?>">
                                 <h6 class="card-title fw-semibold text-start">
                                     <?php echo esc_html($product_name); ?>
                                 </h6>
@@ -163,10 +162,12 @@ $products = array_filter($products, function ($product) {
                             </span>
                         </div>
 
+                        <?php $category_url = ltrim($product_category_url, '/'); ?>
+
                         <!-- Category -->
                         <div class="text-start text-grey small-text">
                             <a class="category-span text-grey text-decoration-none"
-                               href="<?php echo esc_url('/' . $product_category_url); ?>">
+                                href="<?php echo esc_url('/' . $category_url); ?>">
                                 <?php echo esc_html($product_category); ?>
                             </a>
                         </div>
