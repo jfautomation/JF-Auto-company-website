@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-745467518"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8L0L7PF2QZ"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -17,11 +17,14 @@
     gtag('js', new Date());
 
     // Google Ads
-    gtag('config', 'AW-745467518');
+    gtag('config', 'G-8L0L7PF2QZ');
 
     // Google Analytics
     gtag('config', 'G-LG63EEQP3M');
     </script>
+
+
+    'G-8L0L7PF2QZ'
 
     <?php
     /*
