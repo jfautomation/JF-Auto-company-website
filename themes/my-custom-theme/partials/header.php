@@ -20,7 +20,7 @@
     gtag('config', 'AW-745467518');
 
     // Google Analytics
-    gtag('config', 'G-8L0L7PF2QZ');
+    gtag('config', 'G-LG63EEQP3M');
     </script>
 
     <?php
