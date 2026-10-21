@@ -21,6 +21,10 @@
 
     // Google Analytics
     gtag('config', 'G-LG63EEQP3M');
+
+    gtag('event', 'contact_us', {
+        // <event_parameters>
+    });
     </script>
 
 
