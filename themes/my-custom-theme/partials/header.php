@@ -7,6 +7,7 @@
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8L0L7PF2QZ"></script>
+
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -22,25 +23,13 @@
     // Google Analytics
     gtag('config', 'G-LG63EEQP3M');
 
-    gtag('event', 'contact_us', {
-        // <event_parameters>
-    });
+    gtag('event', 'contact_us', {});
     </script>
-
-
-
 
     <?php
     /*
      * Dynamic product SEO.
-     *
-     * Dynamic product pages use their custom SEO title,
-     * description, and canonical URL.
-     *
-     * Normal WordPress pages use the standard WordPress
-     * document title and head functionality.
      */
-
     $is_dynamic_product = !empty($GLOBALS['dynamic_product'])
         && is_array($GLOBALS['dynamic_product']);
 
@@ -48,10 +37,6 @@
         ? $GLOBALS['dynamic_product']
         : [];
 
-    /*
-     * Prevent WordPress from generating a second title
-     * element on dynamic product pages.
-     */
     if ($is_dynamic_product) {
         remove_action('wp_head', '_wp_render_title_tag', 1);
     }
@@ -76,13 +61,96 @@
     <?php endif; ?>
 
     <style>
-    .company-logo {
-        width: 175px;
+    /* =========================================
+           SITE HEADER
+        ========================================= */
+
+    #site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1030;
     }
+
+    /* =========================================
+           FULL-WIDTH QUALITY MARQUEE
+        ========================================= */
+
+    .quality-marquee {
+        display: block;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        padding: 5px 0;
+        white-space: nowrap;
+    }
+
+    .quality-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee-scroll 30s linear infinite;
+    }
+
+    .quality-marquee-group {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .quality-marquee-group span {
+        color: #ffffff !important;
+        padding: 0 25px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    @keyframes marquee-scroll {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .quality-marquee:hover .quality-marquee-track {
+        animation-play-state: paused;
+    }
+
+    /* =========================================
+           MAIN NAVIGATION DECK
+        ========================================= */
+
+    #main-navbar {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        display: block;
+        padding-top: 0.4px !important;
+    }
+
+
+    .company-logo {
+        width: 160px;
+        height: auto;
+        max-height: 50px;
+    }
+
+    .company-logo-container {
+        padding: 0 !important;
+    }
+
 
     .navbar-brand {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
+        margin-top: -5px;
     }
 
     .navbar-toggler {
@@ -93,19 +161,6 @@
     .navbar-toggler:focus {
         outline: none;
         box-shadow: none;
-    }
-
-    .top-nav {
-        border-bottom: 1px solid rgba(186, 186, 186, 0.49);
-        height: 2.25rem;
-    }
-
-    .top-nav.grey-border {
-        border-bottom: 1px solid #e5e5e5;
-    }
-
-    .navbar-brand {
-        margin-top: -8px;
     }
 
     .dropdown-toggle::after {
@@ -121,6 +176,7 @@
     }
 
     /* Default transparent navbar */
+
     .navbar {
         background-color: transparent;
         color: white;
@@ -144,13 +200,13 @@
     }
 
     /* White navbar state */
+
     .navbar.nav-white {
         background-color: white !important;
         color: black;
         transition: box-shadow 0.1s ease-in-out;
     }
 
-    /* Box shadow only when scrolled */
     .navbar.nav-white.scrolled {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
@@ -161,15 +217,13 @@
     }
 
     /* When menu opens */
+
     .navbar.menu-open a.nav-link {
         color: black !important;
         transition: none !important;
     }
 
-    .company-logo {
-        height: auto;
-        max-height: 50px;
-    }
+    /* Logo switching */
 
     .logo-dark {
         display: none;
@@ -190,11 +244,30 @@
     .navbar.nav-transparent .logo-dark {
         display: none;
     }
+
+    /* =========================================
+           RESPONSIVE HEADER
+        ========================================= */
+
+    @media (max-width: 767px) {
+        .quality-marquee-group span {
+            padding: 0 10px;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .quality-marquee-group span {
+            padding: 0 7px;
+            font-size: 9px;
+        }
+    }
     </style>
 
     <?php
     /*
-     * Load the global CSS file inline if it exists.
+     * Load global CSS inline if available.
      */
     $globals_css_path = get_template_directory() . '/css/globals.css';
 
@@ -203,13 +276,9 @@
             . file_get_contents($globals_css_path)
             . '</style>';
     }
-    ?>
 
-    <?php
     /*
-     * IMPORTANT:
-     * Run WordPress head hooks on ALL pages,
-     * including dynamic product pages.
+     * Run WordPress head hooks.
      */
     wp_head();
     ?>
@@ -222,7 +291,7 @@
 
     <?php
     /*
-     * Define which pages should have a transparent navbar.
+     * Determine transparent navbar pages.
      */
     $transparent_pages = ['about', 'services'];
 
@@ -249,54 +318,38 @@
 
     <header id="site-header" class="site-header <?php echo esc_attr($header_class); ?>">
 
-        <nav class="fixed-top navbar navbar-expand-lg text-light d-flex flex-column" id="main-navbar">
+        <!-- =====================================
+             FULL-WIDTH MARQUEE
+        ====================================== -->
 
-            <div class="container top-nav d-flex justify-content-end">
+        <div class="quality-marquee" aria-label="Professional Service. Quality Guaranteed. Reasonable Pricing.">
 
-                <div class="d-flex gap-3 align-items-center text-light">
+            <div class="quality-marquee-track">
 
-                    <a href="tel:9052680778">
-                        <i class="text-light header-social-icon bi bi-telephone-fill"></i>
-                    </a>
+                <?php for ($i = 0; $i < 2; $i++): ?>
 
-                    <?php
-                    $globals_id = 578;
+                <div class="quality-marquee-group" <?php echo $i === 1 ? 'aria-hidden="true"' : ''; ?>>
 
-                    $social_icon_link_1 = get_field(
-                        'social_icon_link_1',
-                        $globals_id
-                    );
-
-                    $social_icon_1 = get_field(
-                        'social_icon_1',
-                        $globals_id
-                    );
-
-                    $social_icon_link_2 = get_field(
-                        'social_icon_link_2',
-                        $globals_id
-                    );
-
-                    $social_icon_2 = get_field(
-                        'social_icon_2',
-                        $globals_id
-                    );
-                    ?>
-
-                    <a href="<?php echo esc_url($social_icon_link_1); ?>">
-                        <i class="text-light bi fs-5 header-social-icon <?php
-                            echo esc_attr($social_icon_1);
-                        ?>"></i>
-                    </a>
-
-                    <a href="<?php echo esc_url($social_icon_link_2); ?>">
-                        <i class="text-light bi fs-5 header-social-icon <?php
-                            echo esc_attr($social_icon_2);
-                        ?>"></i>
-                    </a>
+                    <span>Professional Service</span>
+                    <span>✦</span>
+                    <span>Quality Guaranteed</span>
+                    <span>✦</span>
+                    <span>Reasonable Pricing</span>
+                    <span>✦</span>
 
                 </div>
+
+                <?php endfor; ?>
+
             </div>
+
+        </div>
+
+        <!-- =====================================
+             MAIN NAVIGATION
+        ====================================== -->
+
+        <nav class="navbar navbar-expand-lg text-light" id="main-navbar">
 
             <div class="container inner-nav-container mt-1">
 
@@ -314,25 +367,33 @@
                 );
                 ?>
 
-                <a href="/" class="navbar-brand d-inline-block">
+                <!-- Company Logo -->
+
+                <a href="/" class="navbar-brand d-inline-block company-logo-container">
 
                     <?php if ($company_logo_light): ?>
-                    <img src="<?php echo esc_url($company_logo_light); ?>" alt="Logo Light"
+                    <img src="<?php echo esc_url($company_logo_light); ?>" alt="JF Automation"
                         class="company-logo logo-light">
                     <?php endif; ?>
 
                     <?php if ($company_logo_dark): ?>
-                    <img src="<?php echo esc_url($company_logo_dark); ?>" alt="Logo Dark"
+                    <img src="<?php echo esc_url($company_logo_dark); ?>" alt="JF Automation"
                         class="company-logo logo-dark">
                     <?php endif; ?>
 
                 </a>
 
+                <!-- Mobile Menu Toggle -->
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
+
                     <span class="navbar-toggler-icon"></span>
+
                 </button>
+
+                <!-- Navigation Links -->
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -343,6 +404,7 @@
                         $menu_id = $locations['primary'] ?? null;
 
                         if ($menu_id):
+
                             $menu_items = wp_get_nav_menu_items($menu_id);
 
                             if (!empty($menu_items)):
@@ -382,7 +444,9 @@
                             <a class="nav-link dropdown-toggle <?php echo esc_attr($is_active); ?> services-link"
                                 href="<?php echo esc_url($item->url); ?>" id="servicesDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
+
                                 <?php echo esc_html($item->title); ?>
+
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
@@ -391,7 +455,9 @@
 
                                 <li>
                                     <a class="dropdown-item" href="<?php echo esc_url($child->url); ?>">
+
                                         <?php echo esc_html($child->title); ?>
+
                                     </a>
                                 </li>
 
@@ -407,7 +473,9 @@
 
                             <a class="nav-link <?php echo esc_attr($is_active); ?>"
                                 href="<?php echo esc_url($item->url); ?>">
+
                                 <?php echo esc_html($item->title); ?>
+
                             </a>
 
                         </li>
@@ -418,10 +486,13 @@
                                 endforeach;
 
                             endif;
+
                         endif;
                         ?>
 
                     </ul>
+
+                    <!-- Shop Button -->
 
                     <div class="d-flex align-items-center gap-3 btn-and-social-links-nav-container mt-2">
 
@@ -450,6 +521,7 @@
                     </div>
 
                 </div>
+
             </div>
 
         </nav>

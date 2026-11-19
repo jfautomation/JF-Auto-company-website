@@ -7,6 +7,7 @@
 <?php
 get_template_part('partials/header');
 
+
 $page_id = get_queried_object_id();
 $slug = get_post_field('post_name', $page_id);
 

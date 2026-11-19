@@ -1,5 +1,5 @@
 .company-logo {
-  width: 175px;
+  width: 125px;
 }
 
 .navbar-brand {
@@ -91,10 +91,6 @@
   transition: none !important; /* instant switch, no delay */
 }
 
-.company-logo {
-  height: auto;
-  max-height: 50px; /* adjust as needed */
-}
 
 .logo-dark {
   display: none; /* hidden by default */
